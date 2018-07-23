@@ -75,6 +75,12 @@ public class EmployeeDao extends AbstractDao implements CrudInterface<EmployeeDt
     }
 
     @Override
+    public boolean update(String column, String attribute, String id) {
+        LOG.info("This functionality has not been implemented");
+        throw new UnsupportedOperationException("This functionality has not been implemented yet.");
+    }
+
+    @Override
     public boolean update(String column, String attribute, long id) {
         LOG.info(String.format("Updating employee emp_no = %d", id));
         String query = String.format("UPDATE employee SET %s = '%s' WHERE emp_no = %d;",

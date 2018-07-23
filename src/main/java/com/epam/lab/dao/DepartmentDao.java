@@ -74,9 +74,11 @@ public class DepartmentDao extends AbstractDao implements CrudInterface<Departme
 
     @Override
     public boolean update(String column, String attribute, long id) {
-        return false;
+        LOG.info("This functionality has not been implemented");
+        throw new UnsupportedOperationException("This functionality has not been implemented yet.");
     }
 
+    @Override
     public boolean update(String column, String attribute, String id) {
         LOG.info(String.format("Updating department dept_no = %s", id));
         String query = String.format("UPDATE department SET %s = '%s' WHERE dept_no = %s;",

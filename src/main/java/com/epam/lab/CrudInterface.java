@@ -8,6 +8,8 @@ public interface CrudInterface<T> {
 
     boolean delete(long id);
 
+    boolean update(String column, String attribute, String id);
+
     boolean update(String column, String attribute, long id);
 
     T findEmployeeById(long id);
