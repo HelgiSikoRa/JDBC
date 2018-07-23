@@ -38,7 +38,7 @@ public class DepartmentDao extends AbstractDao implements CrudInterface<Departme
     }
 
     @Override
-    public DepartmentDto findEmployeeById(long id) {
+    public DepartmentDto findByPrimaryKey(long id) {
         DepartmentDto departmentDto = new DepartmentDto();
         try {
             PreparedStatement statement = connection.prepareStatement(SQL_FIND_DEPARTMENT_BY_ID);

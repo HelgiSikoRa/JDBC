@@ -3,6 +3,7 @@ Homework 7
 JDBC
 
 Task
+
 2. For database with departments and students create DAOs, transformers and services with all CRUD operations. 
 Write a few additional methods (e.g. get all departments, get student by id). 
 Write method for department deletion, taking to account the fact that you need to transfer all students from that department to another one. 

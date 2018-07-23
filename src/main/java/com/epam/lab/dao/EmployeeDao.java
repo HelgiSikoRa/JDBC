@@ -19,7 +19,7 @@ public class EmployeeDao extends AbstractDao implements CrudInterface<EmployeeDt
     private final static Logger LOG = LogManager.getLogger(EmployeeDto.class);
 
     @Override
-    public boolean create(EmployeeDto employeeDto) {
+    public boolean create(EmployeeDto employeeDto) throws DAOException {
         LOG.info("Insert into employee");
         try {
             PreparedStatement statement = connection.prepareStatement(SQL_INSERT_EMPLOYEE);
@@ -40,7 +40,7 @@ public class EmployeeDao extends AbstractDao implements CrudInterface<EmployeeDt
     }
 
     @Override
-    public EmployeeDto findEmployeeById(long id) {
+    public EmployeeDto findByPrimaryKey(long id) {
         EmployeeDto employeeDto = new EmployeeDto();
         try {
             PreparedStatement statement = connection.prepareStatement(SQL_FIND_EMPLOYEE_BY_ID);
@@ -57,7 +57,7 @@ public class EmployeeDao extends AbstractDao implements CrudInterface<EmployeeDt
     }
 
     @Override
-    public boolean delete(long id) {
+    public boolean delete(long id) throws DAOException {
         LOG.info(String.format("Delete employee by id = %d:", id));
         try {
             PreparedStatement statement = connection.prepareStatement(SQL_DELETE_EMPLOYEE);
@@ -81,7 +81,7 @@ public class EmployeeDao extends AbstractDao implements CrudInterface<EmployeeDt
     }
 
     @Override
-    public boolean update(String column, String attribute, long id) {
+    public boolean update(String column, String attribute, long id) throws DAOException {
         LOG.info(String.format("Updating employee emp_no = %d", id));
         String query = String.format("UPDATE employee SET %s = '%s' WHERE emp_no = %d;",
                 column, attribute, id);

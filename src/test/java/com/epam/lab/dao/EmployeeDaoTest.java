@@ -47,7 +47,7 @@ public class EmployeeDaoTest {
                 .setEmp_adress(adress);
         CrudInterface<EmployeeDto> crudInterface = new EmployeeDao();
         crudInterface.create(employeeDto);
-        EmployeeDto actualResult = crudInterface.findEmployeeById(randomId);
+        EmployeeDto actualResult = crudInterface.findByPrimaryKey(randomId);
         Assert.assertEquals(actualResult.getEmp_fname(), employeeDto.getEmp_fname());
     }
 
@@ -56,7 +56,7 @@ public class EmployeeDaoTest {
         LOG.info("\nshould Get Employee By Id()");
         EmployeeDto actualEmployee = new EmployeeDto();
         CrudInterface<EmployeeDto> crudInterface = new EmployeeDao();
-        EmployeeDto expectedEmployee = crudInterface.findEmployeeById(getId);
+        EmployeeDto expectedEmployee = crudInterface.findByPrimaryKey(getId);
         String query = String.format("SELECT * FROM employee WHERE emp_no = %d;", getId);
         Connection connection = DatabaseConnection.getInstance().getConnection();
         Statement statement = connection.createStatement();
