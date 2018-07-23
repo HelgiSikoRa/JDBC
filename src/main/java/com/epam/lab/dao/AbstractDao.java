@@ -12,9 +12,9 @@ abstract class AbstractDao {
     Statement statement = null;
 
     AbstractDao() {
-        this.databaseConnection = DatabaseConnection.getInstance();
-        connection = databaseConnection.getConnection();
         try {
+            this.databaseConnection = DatabaseConnection.getInstance();
+            connection = databaseConnection.getConnection();
             statement = connection.createStatement();
         } catch (SQLException e) {
             e.printStackTrace();

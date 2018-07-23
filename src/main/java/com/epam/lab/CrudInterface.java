@@ -4,13 +4,13 @@ import java.util.List;
 
 public interface CrudInterface<T> {
 
-    boolean create(T employeeDto);
+    boolean create(T tDto);
 
     boolean delete(long id);
 
-    boolean update(T employeeDto);
+    boolean update(String column, String attribute, long id);
 
-    T read(long id);
+    T findEmployeeById(long id);
 
     List<T> findAll();
 }

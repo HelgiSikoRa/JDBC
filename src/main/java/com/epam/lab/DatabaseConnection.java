@@ -5,11 +5,12 @@ import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 
+import static com.epam.lab.Constants.PASSWORD;
+import static com.epam.lab.Constants.URL;
+import static com.epam.lab.Constants.USER_NAME;
+
 public class DatabaseConnection {
     private final static Logger LOG = LogManager.getLogger(DatabaseConnection.class);
-    private final String URL = "jdbc:mysql://localhost:3306/sample?serverTimezone=UTC";
-    private final String USER = "root";
-    private final String PASSWORD = "root";
     private Connection connection = null;
     private static DatabaseConnection instance = null;
 
@@ -20,16 +21,19 @@ public class DatabaseConnection {
     private DatabaseConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(URL, USER, PASSWORD);
-            LOG.info("Successfully connected");
+            connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
+            LOG.info("Connecting to DataBase... - successfully connected");
         } catch (ClassNotFoundException | SQLException e) {
-            LOG.error("Connection exception" + e);
+            LOG.error("Connecting to DataBase... connection error" + e);
         }
     }
 
-    public static DatabaseConnection getInstance() {
+    public static DatabaseConnection getInstance() throws SQLException {
         if (instance == null)
             instance = new DatabaseConnection();
+        else if (instance.getConnection().isClosed()) {
+            instance = new DatabaseConnection();
+        }
         return instance;
     }
 }
