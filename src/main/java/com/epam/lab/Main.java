@@ -7,11 +7,11 @@ public class Main {
         createSchemaFromDump();
 
         //Read meta data about table
-       /* MetaData metaData = new MetaData();
+        MetaData metaData = new MetaData();
         metaData.readDatabaseProductNameVersion();
         metaData.readTablesName();
         metaData.readColumnsNumber();
         metaData.readMetaDataAboutColumns();
-        metaData.getPrimaryKey();*/
+        metaData.getPrimaryKey();
     }
 }
